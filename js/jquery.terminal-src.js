@@ -561,6 +561,15 @@
                 }
                 this.append(item);
             },
+            remove: function(item) {
+                for (var i = data.length; i--;) {
+                    if (data[i] === item) {
+                        data.splice(i, 1);
+                        pos--;
+                        return;
+                    }
+                }
+            },
             front: function() {
                 return data[pos];
             },
@@ -4131,6 +4140,7 @@
                 // :: browser
                 // -----------------------------------------------------------------------
                 destroy: function() {
+                    terminals.remove(self);
                     command_line.destroy().remove();
                     output.remove();
                     $(document).unbind('.terminal');
